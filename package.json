@@ -1,0 +1,21 @@
+{
+  "name": "cppaddon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "gypfile": true,
+  "scripts": {
+    "configure": "node-gyp configure",
+    "build": "node-gyp build",
+    "clean": "node-gyp clean",
+    "rebuild": "node-gyp rebuild"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-gyp": "^8.4.0"
+  },
+  "dependencies": {
+    "node-addon-api": "^4.2.0"
+  }
+}
