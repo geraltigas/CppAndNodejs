@@ -1,21 +1,33 @@
 /* cppsrc/main.cpp */
 #include <napi.h>
-#include <iostream>
+#include "Queen.h"
 
-Napi::String SayHelloTo(const Napi::CallbackInfo& info) {
+Napi::String dfss(const Napi::CallbackInfo& info) {
 	Napi::Env env = info.Env();
 
-	std::string strings = info[0].As<Napi::String>().ToString();
+//	std::string strings = info[0].As<Napi::String>().ToString(); //input
 
-	std::cout << "hello" + strings << std::endl;
-
-	std::string returns = std::string("hhhhhhh,get it?");
+	std::string returns = std::string(dfs()); // returns
 
 	return Napi::String::New(env, returns);
 }
 
+
+Napi::String bfss(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+
+//    std::string strings = info[0].As<Napi::String>().ToString(); //input
+
+    std::string returns = std::string(bfs()); // returns
+
+    return Napi::String::New(env, returns);
+}
+
+
+
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
-	exports.Set(Napi::String::New(env, "testFunc"), Napi::Function::New(env, SayHelloTo));
+	exports.Set(Napi::String::New(env, "dfs"), Napi::Function::New(env, dfss));
+    exports.Set(Napi::String::New(env, "bfs"), Napi::Function::New(env, bfss));
 	return exports;
 }
 
